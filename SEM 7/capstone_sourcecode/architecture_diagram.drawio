@@ -1,0 +1,240 @@
+<mxfile host="app.diagrams.net" modified="2026-11-15T18:00:00.000Z" agent="Mozilla/5.0" version="21.0.0" type="device">
+  <diagram id="vesit-smart-campus-architecture" name="System Architecture">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2100" pageHeight="840" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c1" value="1. Campus Data Sources &amp;amp; Ingestion Tier" style="swimlane;startSize=35;fillColor=#f8fafc;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;fontSize=14;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="420" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="2. Relational Database Tier (PostgreSQL 15 - Port 5433)" style="swimlane;startSize=35;fillColor=#f8fafc;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=14;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="500" y="60" width="420" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="3. Backend API Services Tier (FastAPI - Port 8000)" style="swimlane;startSize=35;fillColor=#f8fafc;strokeColor=#7c3aed;fontColor=#5b21b6;fontStyle=1;fontSize=14;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="960" y="60" width="560" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="4. Frontend Presentation Tier (React 19 + Vite - Port 5173)" style="swimlane;startSize=35;fillColor=#f8fafc;strokeColor=#16a34a;fontColor=#15803d;fontStyle=1;fontSize=14;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="60" width="500" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="ds1" value="VESIT Utility Electricity Bills
+(Excel: 2022-2026, Wings A &amp; B, KVA, PF)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="115" width="380" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ds2" value="Campus Appliance Inventory Audits
+(308 ACs, 3,235 Lights, 1,400 PCs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="185" width="380" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ds3" value="Scope 1, 2, 3 Activity Logs
+(Generators, Municipal Water, Food Waste)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="255" width="380" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ds4" value="CEA India Baseline Emission Factors
+(Grid Factor: 0.82 kg CO2e / kWh)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0284c7;fontColor=#0369a1;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="325" width="380" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ing1" value="vesit_ingestion.py
+(Pandas / OpenPyXL Automated ETL Engine)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;fontColor=#92400e;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ing2" value="appliance_ingestion.py
+(Equipment Load &amp; Department Allocator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;fontColor=#92400e;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="510" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mig" value="Alembic Migration Engine
+(Schema Versioning: v2_schema)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#d97706;fontColor=#92400e;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="600" width="380" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="db_auth" value="users / departments
+(Auth Credentials &amp; RBAC Access)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="115" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_energy" value="energy_consumption / electricity_data
+(Monthly kWh Units, KVA Demand, PF)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="195" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_asset" value="appliance / appliance_usage
+(ACs, Lighting, Desktop Workstations)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="275" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_carbon" value="carbon_emission / carbon_calculations
+(Scope 1 Direct, Scope 2 Energy, Scope 3)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="355" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_factor" value="emission_factor / data_source
+(CEA Rates &amp; Institutional Baselines)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="435" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_recs" value="recommendations / simulations / reports
+(AI Decarbonization &amp; Policy Scenarios)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#ecfdf5;strokeColor=#059669;fontColor=#065f46;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="515" width="380" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="be_mw" value="API Gateway &amp; Security Middleware
+CORS (5173/3000) • JWT OAuth2 Security • Pydantic Config" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede9fe;strokeColor=#7c3aed;fontColor=#5b21b6;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="980" y="115" width="520" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_calc" value="Carbon Accounting Engine
+(ISO 14064 &amp; GHG Protocol)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;fontColor=#4c1d95;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="185" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_sim" value="What-If Scenario Engine
+(ROI, Payback &amp; CO2e Offsets)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;fontColor=#4c1d95;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="185" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_ml" value="Time-Series Forecasting
+(ARIMA Trends &amp; 6-Mo Forecast)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;fontColor=#4c1d95;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="260" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_ai" value="AI Recommendation Service
+(Prompt Generation &amp; Fallback)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f3ff;strokeColor=#8b5cf6;fontColor=#4c1d95;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="260" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dash" value="/api/v1/dashboard
+(Gross Carbon, KPIs, Solar Ratio)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="345" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_anl" value="/api/v1/analytics
+(Scope 1, 2, 3 Breakdown)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="345" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_elec" value="/api/v1/electricity
+(Wings A/B Demand &amp; PF Penalty)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="405" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_sim" value="/api/v1/simulation
+(Solar PV, HVAC, LED Retrofits)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="405" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_ins" value="/api/v1/insights
+(AI Decarbonization &amp; ML Forecasts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="465" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_dep" value="/api/v1/departments
+(Department Allocations &amp; Intensity)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="465" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_fac" value="/api/v1/emission-factors
+(CEA Emission Rate Catalog)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="980" y="525" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="r_upl" value="/api/v1/upload
+(Data Hub Excel / CSV Ingestion)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#64748b;fontColor=#334155;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="525" width="250" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="gemini" value="Google Gemini Generative AI Tier
+(gemini-2.5-flash &amp;bull; gemini-3.5-flash-lite &amp;bull; Google GenAI REST API)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce7f3;strokeColor=#db2777;fontColor=#9d174d;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="980" y="610" width="520" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_client" value="Axios API Client &amp;amp; Context State
+AuthContext (JWT) • ThemeContext • DataModeContext" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#16a34a;fontColor=#15803d;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="115" width="460" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_dash" value="Executive Dashboard
+(Gross tCO2e, Energy, Solar)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="185" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_anl" value="Scope 1, 2, 3 Analytics
+(Recharts Donut &amp; Trajectories)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="185" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_elec" value="Electricity Utility Center
+(Wing A/B Bills, PF Penalty)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="250" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_sim" value="What-If Policy Studio
+(Solar &amp; HVAC Sliders)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="250" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_rec" value="AI Decarbonization Hub
+(Gemini Actionable Guidance)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="315" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_pred" value="Predictive Forecasts
+(6-Month ARIMA Horizons)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="315" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_rep" value="Audit &amp;amp; ESG Reports
+(One-Click ISO 14064 Export)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="380" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_dep" value="Department Rankings
+(Intensity per Student &amp; Sqm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="380" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="v_upl" value="Data Hub Upload Portal
+(Excel/CSV Bill Ingestion)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#22c55e;fontColor=#15803d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="445" width="460" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="users" value="Campus Stakeholders &amp;amp; Regulatory ESG Auditors
+Institute Leadership (Dean) • Facilities Manager • Sustainability Auditors" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#475569;fontColor=#1e293b;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="520" width="460" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="Bill Data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ds1" target="ing1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Audit Rows" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ds2" target="ing2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Activity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ds3" target="ing1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="EF Factors" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ds4" target="ing1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="ETL Insert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ing1" target="db_energy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="tCO2e Records" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ing1" target="db_carbon">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="Appliance Inventory" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="ing2" target="db_asset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Alembic DDL" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="mig" target="db_auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="SQLAlchemy ORM" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="db_energy" target="eng_calc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="db_carbon" target="eng_calc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="db_asset" target="eng_sim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="db_energy" target="eng_ml">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="db_recs" target="eng_ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="eng_calc" target="r_dash">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="eng_calc" target="r_anl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="eng_sim" target="r_sim">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="eng_ml" target="r_ins">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#64748b;strokeWidth=2;" edge="1" parent="1" source="eng_ai" target="r_ins">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="JSON Prompts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#db2777;strokeWidth=2;" edge="1" parent="1" source="eng_ai" target="gemini">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="Decarbonization Actions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#db2777;strokeWidth=2;dashed=1;" edge="1" parent="1" source="gemini" target="eng_ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="HTTP / JSON REST API" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#0284c7;strokeWidth=2.5;" edge="1" parent="1" source="be_mw" target="fe_client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" value="Web UI Interaction" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;strokeColor=#059669;strokeWidth=2;" edge="1" parent="1" source="users" target="fe_client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
